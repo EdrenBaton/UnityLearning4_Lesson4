@@ -8,12 +8,12 @@ namespace Asteroids
     {
         private void Start()
         {
+            PoolServiceLocator.SetPool(new EnemyPool(5));
         }
 
         private void ExamplePool()
         {
-            EnemyPool enemyPool = new EnemyPool(5);
-            var enemy = enemyPool.GetEnemy("Asteroid");
+            var enemy = PoolServiceLocator.Resolve<EnemyPool>().GetEnemy("Asteroid");
             enemy.transform.position = Vector3.one;
             enemy.gameObject.SetActive(true);
 
